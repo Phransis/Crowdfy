@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "Crowdfy_backend": {
+      "main": "src/Crowdfy_backend/main.mo",
+      "type": "motoko"
+    },
+    "Crowdfy_frontend": {
+      "dependencies": [
+        "Crowdfy_backend"
+      ],
+      "source": [
+        "src/Crowdfy_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "Crowdfy_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
