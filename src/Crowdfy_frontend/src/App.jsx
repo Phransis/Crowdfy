@@ -1,30 +1,31 @@
 import { useState } from 'react';
-import { Crowdfy_backend } from 'declarations/Crowdfy_backend';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Campaigns from './pages/Campaigns';
+import Explore from './pages/Explore';
+import About from './pages/About';
+import HomePage from './pages/HomePage';
+import Profile from './pages/Profile';
+import Layout from './components/Layout';
 
 function App() {
-  const [greeting, setGreeting] = useState('');
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    Crowdfy_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
 
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name" className='bg-sky-500'>Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/campaigns" element={<Campaigns />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+
+    </>
   );
 }
 
